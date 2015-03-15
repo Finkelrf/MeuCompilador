@@ -1,0 +1,11 @@
+lerere 10129
+word Palavra = "String";
+input	output;
+
+/*Baita comentário word*/
+lol 'c'
+
+
+String "String "
+
+lol
