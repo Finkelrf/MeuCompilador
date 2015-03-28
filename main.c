@@ -1,39 +1,37 @@
+/*
+Integrantes do grupo:
+Igor Ladeira Pereira - 218760
+Rafael Finkelstein - 194640
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "tokens.h"
 
-int main(int argc, char const *argv[])
-{
-	int code;
-	extern FILE * yyin;
+int main (int argc, char ** argv) {
+	int tok;
+	extern FILE* yyin;
 
 	initMe();
 
-	printf("\n");
-
-	if(argc < 2)
-	{
-		fprintf(stderr, "Insira o nome do arquivo\n");
+	if (argc < 2) {
+		fprintf (stderr, "File name not specified. Call: etapa1 file_name\n");
+		exit(1);
+	}
+	if ((yyin = fopen (argv[1], "r")) == 0) {
+		fprintf (stderr, "Cannot open source file %s\n", argv[1]);
 	}
 
-	if(!(yyin = fopen(argv[1],"r")))
-	{
-		fprintf(stderr, "Nao foi possivel abrir o arquivo\n");
+	
+	while (isRunning()) {
+		tok = yylex();
+		if(tok)
+			printf ("found token %d at line %d\n", tok, getLineNumber());
 	}
-
-	while(isRunning())
-	{
-
-		code = yylex();
-
-		if(code)
-			printf("linha %d token %d\n", getLineNumber(), code);
-
-	}
-
+	
 	printf("\n\n");
-	printf("Tabela hash:\n\n");
+	printf("HashTable:\n");
 	hashPrint();
 
-	return 0;
+	return 1;
+
 }
