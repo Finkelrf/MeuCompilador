@@ -4,10 +4,10 @@ Igor Ladeira Pereira - 218760
 Rafael Finkelstein - 194640
 */
 
+#ifndef HASH_H
+#define	HASH_H
 
 #define HASH_SIZE 997
-
-
 
 typedef struct hash_node {
 	char *text;
@@ -20,3 +20,7 @@ void hashPrint (void);
 int hashAddress (char *text);
 HASH_NODE * hashInsert (char *text, int type);
 HASH_NODE * hashFind (char *text, int address, int type);
+
+extern HASH_NODE *table[HASH_SIZE];
+
+#endif

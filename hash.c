@@ -9,6 +9,8 @@ Rafael Finkelstein - 194640
 #include <stdlib.h>
 #include <string.h>
 #include "hash.h"
+#include "y.tab.h"
+
 
 HASH_NODE *table[HASH_SIZE];
 
